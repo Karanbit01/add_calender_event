@@ -23,7 +23,7 @@ class FlutterIsAwesomePlugin: FlutterPlugin, MethodCallHandler {
   private lateinit var result: Result
 
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "add_Calander_Event")
+    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "add_calender_method")
     channel.setMethodCallHandler(this)
   }
 
