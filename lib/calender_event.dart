@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/services.dart';
 
 class CalenderEvent {
@@ -13,6 +15,8 @@ class CalenderEvent {
   static Future<String?> showCalender({required String eventName}) async {
     final version = await methodChannel
         .invokeMethod('addCalanderEvent', {"event_name": eventName});
-    return version;
+    return Platform.isAndroid
+        ? (version ? "Saved Event" : "Failed to save event")
+        : version;
   }
 }
