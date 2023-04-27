@@ -1,3 +1,5 @@
+package com.example.calender_event
+
 import android.content.ContentValues
 import android.content.Context
 import android.net.Uri
@@ -21,7 +23,8 @@ import java.text.SimpleDateFormat
 
 
 
-/** CalenderEventPlugin */
+
+/** FlutterApplication_1Plugin */
 class CalenderEventPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
  
   private lateinit var channel: MethodChannel
