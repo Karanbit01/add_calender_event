@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:calender_event/calender_event.dart';
 
@@ -16,13 +16,13 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
+  final String _platformVersion = 'Unknown';
   final _calenderEventPlugin = CalenderEvent();
 
   @override
   void initState() {
     super.initState();
-    initPlatformState();
+    // 
   }
 
   // Platform messages are asynchronous, so we initialize in an async method.
@@ -33,7 +33,9 @@ class _MyAppState extends State<MyApp> {
       var result = await CalenderEvent.showCalender(eventName: "GS Wellness");
       // platformVersion = await CalenderEvent.getPlatformVersion() ??
       //     'Unknown platform version';
-    } on PlatformException {}
+    } on PlatformException {
+    
+    }
 
     // If the widget was removed from the tree while the asynchronous platform
     // message was in flight, we want to discard the reply rather than calling
@@ -46,10 +48,23 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          title: const Text('Add Calander Event'),
         ),
         body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+          child: MaterialButton(
+            onPressed: (){
+
+              initPlatformState();
+              
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Icon(Icons.calendar_today_rounded),
+                Text(" Tap to add calnder event"),
+              ],
+            ),
+            )
         ),
       ),
     );
