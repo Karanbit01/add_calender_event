@@ -27,7 +27,7 @@ public class CalenderEventPlugin: NSObject, FlutterPlugin {
               let event = EKEvent(eventStore: eventStore)
               event.title = eventName
               event.startDate = Date()
-              event.endDate = Date()
+              event.endDate = Date().adding(hour: 1)
               DispatchQueue.main.async {
                   let eventController = EKEventEditViewController()
                   eventController.event = event
@@ -59,4 +59,9 @@ extension FlutterViewController : EKEventEditViewDelegate, UINavigationControlle
     }
     
     
+}
+extension Date {
+    func adding(hour: Int) -> Date {
+        return Calendar.current.date(byAdding: .hour, value: hour, to: self)!
+    }
 }
